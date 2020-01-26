@@ -1,6 +1,8 @@
 # Implementation
 
-The project uses five classes. All classes are **immutable**. No Nulls allowed. Graphical representation of dependencies in the diagram.
+The project uses five classes. All classes are **immutable**. No Nulls allowed. No DTO classes or services. 
+
+Graphical representation of dependencies in the diagram.
 
 ![Here is the UML diagram.](UML.png)
 
