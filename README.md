@@ -23,8 +23,12 @@ Write unit tests.
   - Solution compressed as zip file or hosted on GitHub (preferred)
   - Unit tests for the implementation
   - Please use build tool such as Maven
+  - [Implementation description](Implementation.md)
 
 ## Task description:
+
+_Consider this description as a business task description in [issue tracking system](https://github.com/rabestro/home-work-premium-calculator/issues) (e.g. Jira).
+All the analysis was done by system analysts and following description was created._
 
 Insurance company wants to start issuing private property policies to their customers.
 System analysts found out that there will be a policy which will have objects (e.g. a flat) and that objects will have sub-objects (e.g. eletronic devices such as TV).

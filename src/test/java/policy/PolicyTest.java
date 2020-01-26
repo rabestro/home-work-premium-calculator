@@ -55,18 +55,6 @@ class PolicyTest {
     }
 
     @Test
-    void changeStatus() {
-    }
-
-    @Test
-    void getNumber() {
-    }
-
-    @Test
-    void getStatus() {
-    }
-
-    @Test
     void getPremium() {
         Policy ExampleOne = Policy.newBuilder()
                 .withNumber("LV19-07-100000-1")
