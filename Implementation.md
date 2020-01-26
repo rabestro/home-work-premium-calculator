@@ -44,11 +44,11 @@ EARTHQUAKE("0.01")  {
 The implementation of policy is in the class Policy. The class is **immutable**. The class has builder to make a new object. The premium for the policy is being calculated automatically after object creation and stored in the private field `BigDecimal premium`. 
 You can get the premium of the policy by calling public function `BigDecimal getPremium()`.  
 
-## Policy object
+## PolicyObject
 
 The implementation of policy objects. The class is **immutable**. The class has a builder and public function `getSumInsured(riskType)`.
 
-## Policy sub-object
+## PolicySubObject
 
 The implementation of policy sub-objects. The class is **immutable** and has a builder to create new object.
 
