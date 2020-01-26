@@ -14,7 +14,7 @@ For example, the following code will add implementation fot new risk type of flo
 ```
 FLOODWATER("0.0165")
 ```
-In the case if new risk type has several coefficients depended on the sum insured or has more complex formula you need to override the default method `BigDecimal getPremium(BigDecimal sumInsured)`. There is an example for the more complex case of new risk type.
+In the case if new risk type has several coefficients depending on the sum insured or has more complex formula you need to override the default method `BigDecimal getPremium(BigDecimal sumInsured)`. There is an example for the more complex case of new risk type.
 
 ```
 EARTHQUAKE("0.01")  {
