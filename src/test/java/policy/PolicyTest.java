@@ -28,31 +28,22 @@ class PolicyTest {
     }
 
     @Test
-    void getPremium() {
-        Policy ExampleOne = Policy.newBuilder()
-                .withNumber("LV19-07-100000-1")
-                .withStatus(Status.REGISTERED)
-                .addObject(flat)
-                .build();
+    void exampleOne() {
+        Policy ExampleOne = new Policy("LV19-07-100000-1",Status.REGISTERED, List.of(flat));
 
         assertEquals(new BigDecimal("2.10"), ExampleOne.getPremium());
+    }
 
-        Policy ExampleTwo = Policy.newBuilder()
-                .withNumber("LV19-07-100000-2")
-                .withStatus(Status.APPROVED)
-                .addObject(villa)
-                .build();
+    @Test
+    void exampleTwo() {
+        Policy ExampleTwo = new Policy("LV19-07-100000-2", Status.APPROVED, List.of(villa));
 
         assertEquals(new BigDecimal("16.50"), ExampleTwo.getPremium());
     }
 
     @Test
-    void testGetPremium() {
-        Policy ExampleTwo = Policy.newBuilder()
-                .withNumber("LV19-07-100000-2")
-                .withStatus(Status.APPROVED)
-                .addObject(villa)
-                .build();
+    void testGetPremiumRiskType() {
+        Policy ExampleTwo = new Policy("LV19-07-100000-2", Status.APPROVED, List.of(villa));
 
         assertEquals(new BigDecimal("11.50"), ExampleTwo.getPremium(RiskType.FIRE));
         assertEquals(new BigDecimal("5.00"), ExampleTwo.getPremium(RiskType.WATER));

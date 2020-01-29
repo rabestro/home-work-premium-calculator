@@ -3,7 +3,6 @@ package policy;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,20 +12,13 @@ public class Policy {
     private final Status status;
     private final BigDecimal premium;
 
-    private Policy(@NotNull final String number,
+    public Policy(@NotNull final String number,
                    @NotNull final Status status,
                    @NotNull final List<PolicyObject> objects) {
         this.number = number;
         this.status = status;
         this.objects = List.copyOf(objects);
         this.premium = calculatePremium();
-    }
-
-    private Policy(@NotNull final Builder builder) {
-        number = builder.policyNumber;
-        status = builder.policyStatus;
-        objects = List.copyOf(builder.policyObjects);
-        premium = calculatePremium();
     }
 
     Policy changeStatus(@NotNull final Status newStatus) {
@@ -71,36 +63,5 @@ public class Policy {
                 .orElse(BigDecimal.ZERO);
 
         return riskType.getPremium(sum);
-    }
-    public static Builder newBuilder() {
-        return new Builder();
-    }
-
-    public static final class Builder {
-        private String policyNumber;
-        private Status policyStatus;
-        private final List<PolicyObject> policyObjects = new ArrayList<>();
-
-        private Builder() {
-        }
-
-        public Builder withNumber(@NotNull final String val) {
-            policyNumber = val;
-            return this;
-        }
-
-        public Builder withStatus(@NotNull final Status val) {
-            policyStatus = val;
-            return this;
-        }
-
-        public Builder addObject(@NotNull final PolicyObject val) {
-            policyObjects.add(val);
-            return this;
-        }
-
-        public Policy build() {
-            return new Policy(this);
-        }
     }
 }
