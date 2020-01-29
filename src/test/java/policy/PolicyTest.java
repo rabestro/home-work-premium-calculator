@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,17 +23,8 @@ class PolicyTest {
         subObject03 = new PolicySubObject("LCD", 500, RiskType.FIRE);
         subObject04 = new PolicySubObject("CAR", 100, RiskType.WATER);
 
-        flat = PolicyObject.newBuilder()
-                .withObjectName("A flat")
-                .addSubObject(subObject01)
-                .addSubObject(subObject02)
-                .build();
-
-        villa = PolicyObject.newBuilder()
-                .withObjectName("A villa")
-                .addSubObject(subObject03)
-                .addSubObject(subObject04)
-                .build();
+        flat = new PolicyObject("A flat", List.of(subObject01, subObject02));
+        villa = new PolicyObject("A flat", List.of(subObject03, subObject04));
     }
 
     @Test

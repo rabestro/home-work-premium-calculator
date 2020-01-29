@@ -48,7 +48,7 @@ You can get the premium of the policy by calling public function `BigDecimal get
 
 ## PolicyObject
 
-The implementation of policy objects. The class is **immutable**. The class has a builder and public function `getSumInsured(riskType)`.
+The implementation of policy objects. The class is **immutable**. The class has a public function `getSumInsured(riskType)`.
 
 ## PolicySubObject
 
