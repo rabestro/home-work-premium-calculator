@@ -8,47 +8,28 @@ import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PolicyObjectTest {
-    private PolicySubObject subObject_01;
-    private PolicySubObject subObject_02;
-    private PolicySubObject subObject_03;
-    private PolicySubObject subObject_04;
+    private PolicySubObject subObject01;
+    private PolicySubObject subObject02;
+    private PolicySubObject subObject03;
+    private PolicySubObject subObject04;
     private PolicyObject flat;
 
     @BeforeEach
     void setUp() {
-        subObject_01 = PolicySubObject.newBuilder()
-                .withRiskType(RiskType.FIRE)
-                .withSubObjectName("TV")
-                .withSumInsured("120")
-                .build();
-
-        subObject_02 = PolicySubObject.newBuilder()
-                .withRiskType(RiskType.FIRE)
-                .withSubObjectName("Motorbike")
-                .withSumInsured("12009.100")
-                .build();
-
-        subObject_03 = PolicySubObject.newBuilder()
-                .withRiskType(RiskType.WATER)
-                .withSubObjectName("LCD")
-                .withSumInsured("249.995")
-                .build();
-
-        subObject_04 = PolicySubObject.newBuilder()
-                .withRiskType(RiskType.WATER)
-                .withSubObjectName("CAR")
-                .withSumInsured("36900")
-                .build();
+        subObject01 = new PolicySubObject("TV", 120, RiskType.FIRE);
+        subObject02 = new PolicySubObject("Motorbike", 12009.1, RiskType.FIRE);
+        subObject03 = new PolicySubObject("LCD", 249.995, RiskType.WATER);
+        subObject04 = new PolicySubObject("CAR", 36900, RiskType.WATER);
     }
 
     @Test
     void getSumInsured() {
         flat = PolicyObject.newBuilder()
                 .withObjectName("A flat")
-                .addSubObject(subObject_01)
-                .addSubObject(subObject_02)
-                .addSubObject(subObject_03)
-                .addSubObject(subObject_04)
+                .addSubObject(subObject01)
+                .addSubObject(subObject02)
+                .addSubObject(subObject03)
+                .addSubObject(subObject04)
                 .build();
 
         assertEquals(new BigDecimal("12129.10"), flat.getSumInsured(RiskType.FIRE));
@@ -63,29 +44,20 @@ class PolicyObjectTest {
 
         flat = PolicyObject.newBuilder()
                 .withObjectName("A flat")
-                .addSubObject(subObject_01)
-                .addSubObject(subObject_02)
+                .addSubObject(subObject01)
+                .addSubObject(subObject02)
                 .build();
 
         assertEquals(new BigDecimal("12129.10"), flat.getSumInsured(RiskType.FIRE));
         assertEquals(new BigDecimal("0.00"), flat.getSumInsured(RiskType.WATER));
 
-        subObject_03 = PolicySubObject.newBuilder()
-                .withRiskType(RiskType.FIRE)
-                .withSubObjectName("Cigar")
-                .withSumInsured("500")
-                .build();
-
-        subObject_04 = PolicySubObject.newBuilder()
-                .withRiskType(RiskType.WATER)
-                .withSubObjectName("Boat")
-                .withSumInsured("100")
-                .build();
+        subObject03 = new PolicySubObject("Cigar", 500, RiskType.FIRE);
+        subObject04 = new PolicySubObject("Boat", 100, RiskType.WATER);
 
         flat = PolicyObject.newBuilder()
                 .withObjectName("A flat")
-                .addSubObject(subObject_03)
-                .addSubObject(subObject_04)
+                .addSubObject(subObject03)
+                .addSubObject(subObject04)
                 .build();
 
         assertEquals(new BigDecimal("500.00"), flat.getSumInsured(RiskType.FIRE));

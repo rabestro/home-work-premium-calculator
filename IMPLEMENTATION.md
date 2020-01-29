@@ -52,5 +52,5 @@ The implementation of policy objects. The class is **immutable**. The class has 
 
 ## PolicySubObject
 
-The implementation of policy sub-objects. The class is **immutable** and has a builder to create new object.
+The implementation of policy sub-objects. The class is **immutable**.
 
